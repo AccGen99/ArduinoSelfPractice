@@ -46,5 +46,17 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  // Time taken by wave to reach obstacle and come back
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2000);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  pingTime = pulseIn(echoPin, HIGH) * 0.000001;  //Measures time in microseconds
 
+  distance = speedOfSound * pingTime;
+  Serial.print("Distance to obstacle - ");
+  Serial.print(distance);
+  Serial.println(" m");
+  delay(1000);
 }
